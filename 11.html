@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastgele Soru Uygulaması</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        .game-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            padding: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rastgele Soru Uygulaması</h1>
+        <div class="game-box">
+            <h2>Toplama Oyunu</h2>
+            <div class="question" id="question">0 + 0</div>
+            <input type="number" id="userAnswer" placeholder="Cevabınızı girin">
+            <button onclick="checkAnswer()">Kontrol Et</button>
+            <button onclick="newQuestion()">Yeni Soru</button>
+            <p class="feedback" id="feedback"></p>
+        </div>
+    </div>
+
+    <script>
+        function newQuestion() {
+            const a = Math.floor(Math.random() * 100);
+            const b = Math.floor(Math.random() * 100);
+            const c = document.getElementById('question');
+            const d = document.getElementById('userAnswer');
+            const e = document.getElementById('feedback');
+            c.textContent = `${a} + ${b}`;
+            d.value = '';
+            e.textContent = '';
+        }
+
+        function checkAnswer() {
+            const a = document.getElementById('question').textContent.split(' + ').map(Number);
+            const b = a[0] + a[1];
+            const c = parseInt(document.getElementById('userAnswer').value);
+            const d = document.getElementById('feedback');
+            if (c === b) {
+                d.textContent = 'Doğru!';
+            } else {
+                d.textContent = 'Yanlış!';
+            }
+        }
+
+        // İlk soru ile başla
+        newQuestion();
+    </script>
+</body>
+</html>

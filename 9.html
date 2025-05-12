@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Alma Uygulaması</title>
+</head>
+<body>
+    <div>
+        <h2>Not Alma Uygulaması</h2>
+        <h3>Basit Not Alıcı</h3>
+        <input type="text" id="noteInput" placeholder="Notunuzu buraya yazın">
+        <button onclick="addNote()">Not Ekle</button>
+        <ul id="noteList">
+            <li>Azimli sıçan duvarı deler. <button onclick="deleteNote(this)">Sil</button></li>
+        </ul>
+    </div>
+
+    <script>
+        function addNote() {
+            const a = document.getElementById('noteInput');
+            const b = document.getElementById('noteList');
+            const c = a.value.trim();
+            if (c) {
+                const d = document.createElement('li');
+                d.textContent = c + ' ';
+                const e = document.createElement('button');
+                e.textContent = 'Sil';
+                e.onclick = function() { deleteNote(e); };
+                d.appendChild(e);
+                b.appendChild(d);
+                a.value = '';
+            }
+        }
+
+        function deleteNote(f) {
+            f.parentElement.remove();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayı Tahmin Oyunu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        .game-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .input-section {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 60px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SAYI TAHMİN OYUNU</h1>
+        <div class="game-container">
+            <h2>Sayı Tahmin Oyunu</h2>
+            <p>1 ile 100 arasında bir sayı tahmin edin:</p>
+            <div class="input-section">
+                <input type="number" id="a" min="1" max="100" value="50">
+                <button onclick="b()">Tahmin Et</button>
+            </div>
+            <p id="c">Daha küçük bir sayı girin.</p>
+        </div>
+    </div>
+
+    <script>
+        const d = Math.floor(Math.random() * 100) + 1;
+
+        function b() {
+            const e = document.getElementById('a');
+            const f = document.getElementById('c');
+            const g = parseInt(e.value);
+
+            if (isNaN(g) || g < 1 || g > 100) {
+                f.textContent = "Lütfen 1 ile 100 arasında bir sayı girin.";
+                return;
+            }
+
+            if (g === d) {
+                f.textContent = "Tebrikler! Doğru tahmin ettiniz!";
+                f.style.color = "green";
+            } else if (g > d) {
+                f.textContent = "Daha küçük bir sayı girin.";
+                f.style.color = "black";
+            } else {
+                f.textContent = "Daha büyük bir sayı girin.";
+                f.style.color = "black";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renk Değiştirici</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1AA244;
+            transition: background-color 0.5s;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        .color-box {
+            background-color: #1AA244;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rastgele ArkaPlan Değiştirme</h1>
+        <div class="color-box">
+            <h2>Renk Değiştirici</h2>
+            <p>Şu anki renk: #1AA244</p>
+            <button onclick="changeColor()">Renk Değiştir</button>
+        </div>
+    </div>
+
+    <script>
+        function changeColor() {
+            const a = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+            const b = document.body.style;
+            const c = document.querySelector('.color-box');
+            const d = document.querySelector('p');
+
+            b.backgroundColor = `#${a}`;
+            c.style.backgroundColor = `#${a}`;
+            d.textContent = `Şu anki renk: #${a}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zamanlayıcı</title>
+</head>
+<body>
+    <div>
+        <h2>Zamanlayıcı</h2>
+        <input type="number" id="timeInput" value="30" min="0">
+        <button onclick="startTimer()">Başlat</button>
+        <button onclick="pauseTimer()">Dur</button>
+        <button onclick="resetTimer()">Sıfırla</button>
+        <h3 id="display">00:00</h3>
+    </div>
+
+    <script>
+        let a = 0;
+        let b = null;
+        const c = document.getElementById('timeInput');
+        const d = document.getElementById('display');
+
+        function startTimer() {
+            if (!b) {
+                a = parseInt(c.value) || 0;
+                b = setInterval(function() {
+                    if (a <= 0) {
+                        clearInterval(b);
+                        b = null;
+                        return;
+                    }
+                    a--;
+                    updateDisplay();
+                }, 1000);
+            }
+        }
+
+        function pauseTimer() {
+            clearInterval(b);
+            b = null;
+        }
+
+        function resetTimer() {
+            clearInterval(b);
+            b = null;
+            a = parseInt(c.value) || 0;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            const e = Math.floor(a / 60);
+            const f = a % 60;
+            d.textContent = `${e < 10 ? '0' + e : e}:${f < 10 ? '0' + f : f}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metin Sayacı</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: none;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .highlight {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SAYAÇ</h1>
+        <div class="input-container">
+            <h2>Metin Girin</h2>
+            <textarea id="textInput" rows="4" maxlength="100" placeholder="Metni buraya girin..."></textarea>
+            <p id="counter">0 karakter | 0 kelime | 100 karakter kaldı</p>
+        </div>
+    </div>
+
+    <script>
+        const a = document.getElementById('textInput');
+        const b = document.getElementById('counter');
+        const c = 100;
+
+        a.addEventListener('input', function() {
+            const d = a.value;
+            const e = d.length;
+            const f = d.trim().split(/\s+/).filter(word => word.length > 0).length;
+            const g = c - e;
+
+            b.textContent = `${e} karakter | ${f} kelime | ${g} karakter kaldı`;
+            
+            if (e > 0) {
+                const h = d.split(' ').pop();
+                a.value = d.replace(h, `<span class="highlight">${h}</span>`);
+            }
+        });
+    </script>
+</body>
+</html>

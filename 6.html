@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaş Detay Hesaplayıcı</title>
+</head>
+<body>
+    <div>
+        <h2>Yaş Detay Hesaplayıcı</h2>
+        <input type="date" id="birthDate">
+        <button onclick="calculateAge()">Hesapla</button>
+        <div id="result" style="margin-top: 20px;">
+            <p id="ageResult"></p>
+            <p id="daysLived"></p>
+            <p id="daysToNextBirthday"></p>
+        </div>
+    </div>
+
+    <script>
+        function calculateAge() {
+            const a = document.getElementById('birthDate').value;
+            const b = document.getElementById('ageResult');
+            const c = document.getElementById('daysLived');
+            const d = document.getElementById('daysToNextBirthday');
+            const e = new Date(a);
+            const f = new Date();
+            const g = Math.floor((f - e) / (1000 * 60 * 60 * 24));
+            const h = Math.floor(g / 365);
+            const i = Math.floor((g % 365) / 30);
+            const j = g % 30;
+            const k = new Date(f.getFullYear(), e.getMonth(), e.getDate());
+            let l = (k - f) / (1000 * 60 * 60 * 24);
+            if (l < 0) k.setFullYear(f.getFullYear() + 1), l = (k - f) / (1000 * 60 * 60 * 24);
+            l = Math.abs(Math.floor(l));
+
+            b.textContent = `Yaşınız: ${h} yıl, ${i} ay, ${j} gün`;
+            c.textContent = `Bugüne kadar ${g} gün yaşamışsınız.`;
+            d.textContent = `Bir sonraki doğum gününüze ${l} gün kaldı.`;
+        }
+    </script>
+</body>
+</html>

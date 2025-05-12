@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basit Hesap Makinesi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .calculator {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        input, select, button {
+            margin: 10px 0;
+            padding: 8px;
+            width: 100px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        select {
+            width: 115px;
+        }
+        button {
+            width: 115px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Basit Hesap Makinesi</h2>
+        <input type="number" id="num1" value="2"><br>
+        <input type="number" id="num2" value="3"><br>
+        <select id="operation">
+            <option value="toplama">Toplama</option>
+            <option value="cikarma">Çıkarma</option>
+            <option value="carpma">Çarpma</option>
+            <option value="bolme">Bölme</option>
+        </select><br>
+        <button onclick="calculate()">Hesapla</button><br>
+        <div id="result">Sonuç: <span id="resultValue">5</span></div>
+    </div>
+
+    <script>
+        const num1 = document.getElementById('num1');
+        const num2 = document.getElementById('num2');
+        const operation = document.getElementById('operation');
+        const resultValue = document.getElementById('resultValue');
+
+        function calculate() {
+            const value1 = parseFloat(num1.value) || 0;
+            const value2 = parseFloat(num2.value) || 0;
+            let result;
+
+            switch (operation.value) {
+                case 'toplama':
+                    result = value1 + value2;
+                    break;
+                case 'cikarma':
+                    result = value1 - value2;
+                    break;
+                case 'carpma':
+                    result = value1 * value2;
+                    break;
+                case 'bolme':
+                    result = value2 !== 0 ? value1 / value2 : 'Hata';
+                    break;
+                default:
+                    result = 0;
+            }
+
+            resultValue.textContent = typeof result === 'number' ? result : result;
+        }
+    </script>
+</body>
+</html>

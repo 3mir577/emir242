@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tıklama Sayacı</title>
+</head>
+<body>
+    <div>
+        <h2>Tıklama Sayacı</h2>
+        <p>Butona tıklayın:</p>
+        <button onclick="increment()">Tıkla</button>
+        <p>Toplam Tıklama: <span id="clickCount">0</span></p>
+        <button onclick="reset()">Sıfırla</button>
+    </div>
+
+    <script>
+        let a = 0;
+        const b = document.getElementById('clickCount');
+
+        function increment() {
+            a++;
+            b.textContent = a;
+        }
+
+        function reset() {
+            a = 0;
+            b.textContent = a;
+        }
+    </script>
+</body>
+</html>

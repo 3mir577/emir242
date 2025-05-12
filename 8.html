@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metin Ters Çevirme</title>
+</head>
+<body>
+    <div>
+        <h2>Metin Ters Çevirme</h2>
+        <h3>Metin Ters Çevirici</h3>
+        <input type="text" id="inputText" placeholder="Lütfen Erkekler Yüksek Alsın">
+        <button onclick="reverseText()">Ters Çevir</button>
+        <p id="result">Çevrilen Metin: </p>
+    </div>
+
+    <script>
+        function reverseText() {
+            const a = document.getElementById('inputText').value;
+            const b = document.getElementById('result');
+            const c = a.split('').reverse().join('');
+            b.textContent = `Çevrilen Metin: ${c}`;
+        }
+    </script>
+</body>
+</html>
